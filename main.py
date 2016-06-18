@@ -4,6 +4,7 @@
 import os
 import glob
 import zipfile
+import lzmaffi as lzma
 
 ipa_files = glob.glob('*.ipa')
 
@@ -18,6 +19,15 @@ for name in zip_files:
 	zip_ref.extractall('./')
 	zip_ref.close()
 
-	#csv_list = os.listdir('./Payload/Clash of Clans.app/res/logic')
+wanted_csv = ['buildings.csv', 'heroes.csv', 'spells.csv', 'traps.csv', 'characters.csv']
 
-wanted_csv = ['buildings.csv', 'heroes.csv', 'spells.csv', 'traps.csv', 'troops.csv']
+for csv in wanted_csv:
+	fh = open('./Payload/Clash of Clans.app/res/logic/'+csv)
+	lz = lzma.LZMADecompressor()
+	data = fh.read()
+	data = data[0:9]+("\x00" * 4)+data[9:]
+	dc_csv = open(csv, 'w')
+	dc_csv.write(lz.decompress(data))
+	dc_csv.close()
+
+
