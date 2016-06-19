@@ -32,6 +32,9 @@ for compressed_csv in wanted_csv:
 	dc_csv.write(lz.decompress(data))
 	dc_csv.close()
 
+nb_items = 0
+war_weight = [[0 for x in range(3)] for y in range(361)]
+
 for dc_csv in wanted_csv:
 	open_csv = csv.reader(open(dc_csv, 'rb'))
 	for row in open_csv:
@@ -59,27 +62,16 @@ for dc_csv in wanted_csv:
 			level += 1
 		
 		if ((row[weight_place] != ('')) and (row[weight_place] != ('0')) and (row[weight_place] != ('int'))):
-			print base_name, '|', level,  '|' , row[weight_place]
+			war_weight[nb_items][0] = base_name
+			war_weight[nb_items][1] = level
+			war_weight[nb_items][2] = int(row[weight_place])
+			nb_items += 1
+print war_weight
 
 
-		# for column in row[0]:	
-		# 	strengthweight_column = 0
-		# 	name_column = 0
-		# 	if column != ('StrengthWeight' or 'Name'):
-		# 		strengthweight_column += 1
-		# 		name_column += 1
-		# 	elif column == 'Name':
-		# 		print name_column
-		# 		strengthweight_column += 1
-		# 	elif column == 'StrengthWeight':
-		# 		print strengthweight_column
-		# 		name_column +=1
 
-# with open('traps.csv', 'r') as f:
-	# for row in csv.reader(f, delimiter=','):
-	# 	if row[49] != '':
-	# 		print row[0], "|", row[49]
-		# for column in row:
-		# 	i += 1
-		# 	if column == 'StrengthWeight':
-		# 		print column, i
+
+
+
+
+	#
