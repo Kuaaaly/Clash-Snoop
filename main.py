@@ -48,7 +48,18 @@ for dc_csv in wanted_csv:
 			else:
 				counter += 1
 		break
-	print dc_csv, name_place, weight_place
+	#print dc_csv, name_place, weight_place
+	
+	level = 1
+	for row in open_csv:
+		if row[name_place] != '':
+			base_name = row[name_place]
+			level = 1
+		else:
+			level += 1
+		
+		if ((row[weight_place] != ('')) and (row[weight_place] != ('0')) and (row[weight_place] != ('int'))):
+			print base_name, '|', level,  '|' , row[weight_place]
 
 
 		# for column in row[0]:	
