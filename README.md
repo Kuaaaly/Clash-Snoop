@@ -1,6 +1,6 @@
-#Clash Snoop
+# Clash Snoop
 
---- English ---
+## English
 
 Clash Snoop is a small utility for Clash of Clans. It allows you to decompress the logic files of the game and then explore to learn more about game logics.
 
@@ -17,7 +17,7 @@ The actual functions of Clash Snoop are :
 
 Source used for decompression : [cocdp](https://github.com/clanner/cocdp)
 
---- Français ---
+## Français
 
 Clash Snoop est un petit utilitaire pour Clash of Clans. Il vous permet de décompresser les fichiers de logique du jeu afin de pouvoir ensuite les explorer et en apprendre davantage sur le jeu.
 
